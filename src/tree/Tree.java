@@ -1,6 +1,7 @@
 package tree;
 
 import java.time.temporal.Temporal;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
@@ -168,7 +169,7 @@ public class Tree {
             }
             if (!stack.isEmpty()) {
                 current = stack.peek().right;
-                if (current == null || current == pre) {
+                if (current == null || current.right == pre) {
                     current = stack.pop();
                     visit(current);
                     pre = current;
@@ -185,7 +186,7 @@ public class Tree {
      */
     private void cenci(TreeNode node) {
         System.out.println("层次遍历");
-        Queue<TreeNode> queue = new PriorityQueue();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(node);
         TreeNode current = null;
         while (!queue.isEmpty()) {
